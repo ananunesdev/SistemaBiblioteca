@@ -2,6 +2,8 @@ package br.com.sistemabiblioteca.crud;
 
 import java.sql.Connection;
 
+import javax.swing.JOptionPane;
+
 import br.com.sistemabiblioteca.jdbc.ConnectionFactory;
 import br.com.sistemabiblioteca.model.Biblioteca;
 
@@ -15,8 +17,11 @@ public class CrudBiblioteca {
 			//Import transition data class database
 			Biblioteca biblioteca = new Biblioteca();
 			
+			//send data to class library
 			
-			
+			biblioteca.setTitulo (JOptionPane.showInputDialog("Insira o título do livro: "));
+			biblioteca.setAutor(JOptionPane.showInputDialog("Insira o autor do livro: "));
+			biblioteca.setAno_publicacao(JOptionPane.showInputDialog("Insira o ano de publicação do livro: "));
 			
 			
 			
