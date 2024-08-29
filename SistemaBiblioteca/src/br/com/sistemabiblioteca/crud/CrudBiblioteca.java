@@ -21,14 +21,31 @@ public class CrudBiblioteca {
 			
 			biblioteca.setTitulo (JOptionPane.showInputDialog("Insira o título do livro: "));
 			biblioteca.setAutor(JOptionPane.showInputDialog("Insira o autor do livro: "));
-			biblioteca.setAno_publicacao(JOptionPane.showInputDialog("Insira o ano de publicação do livro: "));
+			biblioteca.setAno_publicacao(Integer.parseInt(JOptionPane.showInputDialog("Insira o ano de publicação do livro: ")));
+			biblioteca.setIsbn(JOptionPane.showInputDialog("Insira o ISBN do livro: "));
+			biblioteca.setEditora(JOptionPane.showInputDialog("Insira a editora do livro: "));
+			biblioteca.setGenero(JOptionPane.showInputDialog("Insira o gênero do livro: "));
 			
-			
-			
-			
-			
-			
-			
+			String[] genero = {
+					"Aventura",
+					"Autoajuda",
+					"Biografia",
+					"Culinária",
+					"Didático",
+					"Drama",
+					"Fantasia",
+					"Ficção Científica",
+					"História",
+					"Infantil",
+					"Literatura Clássica",
+					"Mistério",
+					"Não-Ficção",
+					"Outros",
+					"Poesia",
+					"Romance",
+					"Suspense",
+					"Terror"
+			}
 			
 		} catch (Exception e) {
 			
@@ -47,8 +64,8 @@ public class CrudBiblioteca {
 	}
 	
 	//method to update the book
-		public static void update() {
-			System.out.println("UPDATE");
+	public static void update() {
+		System.out.println("UPDATE");
 		}
 	
 	//method to delete the book
