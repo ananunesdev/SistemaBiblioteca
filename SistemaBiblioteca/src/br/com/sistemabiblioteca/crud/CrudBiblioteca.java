@@ -24,9 +24,7 @@ public class CrudBiblioteca {
 			biblioteca.setAno_publicacao(Integer.parseInt(JOptionPane.showInputDialog("Insira o ano de publicação do livro: ")));
 			biblioteca.setIsbn(JOptionPane.showInputDialog("Insira o ISBN do livro: "));
 			biblioteca.setEditora(JOptionPane.showInputDialog("Insira a editora do livro: "));
-			biblioteca.setGenero(JOptionPane.showInputDialog("Insira o gênero do livro: "));
-			
-			String[] genero = {
+			String[] generos = {
 					"Aventura",
 					"Autoajuda",
 					"Biografia",
@@ -45,7 +43,12 @@ public class CrudBiblioteca {
 					"Romance",
 					"Suspense",
 					"Terror"
-			}
+			};
+			
+			String generoSelecionado = (String)JOptionPane.showInputDialog(null, "Selecione o gênero do livro: ", "Escolha de Gênero: ", JOptionPane.QUESTION_MESSAGE, null, generos, generos[0]);
+			//library.setGenre
+			
+			biblioteca.setGenero(generoSelecionado);
 			
 		} catch (Exception e) {
 			
