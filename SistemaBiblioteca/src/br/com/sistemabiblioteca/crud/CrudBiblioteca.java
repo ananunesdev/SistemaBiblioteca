@@ -1,9 +1,34 @@
 package br.com.sistemabiblioteca.crud;
 
+import java.sql.Connection;
+
+import br.com.sistemabiblioteca.jdbc.ConnectionFactory;
+import br.com.sistemabiblioteca.model.Biblioteca;
+
 public class CrudBiblioteca {
 	//method to create a new book
 	public static void create() {
-		System.out.println("CREATE");
+		try {
+			//Import connection class with database
+			Connection conexao = ConnectionFactory.createConnection();
+			
+			//Import transition data class database
+			Biblioteca biblioteca = new Biblioteca();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			
+		}
+		
 	}
 	
 	//method to read all the books
