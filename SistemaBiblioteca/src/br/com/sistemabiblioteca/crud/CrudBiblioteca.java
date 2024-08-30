@@ -2,6 +2,7 @@ package br.com.sistemabiblioteca.crud;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
@@ -73,7 +74,39 @@ public class CrudBiblioteca {
 	
 	//method to read all the books
 	public static void read() {
-		System.out.println("READ");
+		try {
+		
+			Connection conexao = ConnectionFactory.createConnection();
+			
+			Biblioteca biblioteca = new Biblioteca();
+			
+			String sql = "select * from livros;";
+			
+			PreparedStatement cmd = conexao.prepareStatement(sql);
+			ResultSet resultado = cmd.executeQuery();
+			
+			String livros;
+			
+			livros = "<<Livros encontrados!>>";
+			
+			while(resultado.next()) {
+				livros += "ID: " + resultado.getInt("id") 
+						+ "- ISBN: " + resultado.getString("isbn") 
+						+ "- Título: " + resultado.getString("titulo") 
+						+ "- Autor: " + resultado.getString("autor") 
+						+ "\n ----------------------------------------\n"; 
+			}
+			JOptionPane.showMessageDialog(null, livros);
+			cmd.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
 	}
 	
 	//method to read one book
