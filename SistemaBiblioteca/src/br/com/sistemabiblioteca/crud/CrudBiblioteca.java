@@ -87,7 +87,7 @@ public class CrudBiblioteca {
 			
 			String livros;
 			
-			livros = "<<Livros encontrados!>>";
+			livros = "<< Livros encontrados >>\n\n";
 			
 			while(resultado.next()) {
 				livros += "ID: " + resultado.getInt("id") 
@@ -103,15 +103,47 @@ public class CrudBiblioteca {
 			e.printStackTrace();
 		}
 		
-		
-		
-		
-		
 	}
 	
 	//method to read one book
 	public static void readone() {
-		System.out.println("READ ONE");
+		try {
+			
+			Connection conexao = ConnectionFactory.createConnection();
+			
+			Biblioteca biblioteca = new Biblioteca();
+			
+			biblioteca.setIsbn(JOptionPane.showInputDialog("Entre com o ISBN"));
+			
+			
+			String sql = "select * from livros where isbn = ?;";
+			
+			PreparedStatement cmd = conexao.prepareStatement(sql);
+			cmd.setString(1, biblioteca.getIsbn());
+			ResultSet resultado = cmd.executeQuery();
+			
+			String livros;
+			
+			livros = ".:: Livros encontrados ::.\n\n";
+			
+			while(resultado.next()) {
+				livros += "ID: " + resultado.getInt("id") + "\n"
+						+ " ISBN: " + resultado.getString("isbn") + "\n"
+						+ "\n"
+						+ " Título: " + resultado.getString("titulo") + "\n"
+						+ " Autor: " + resultado.getString("autor") + "\n"
+						+ " Ano de publicação: " + resultado.getInt("ano_publicacao") + "\n"
+						+ " ----------------------------------------\n"
+						+ " Editora: " + resultado.getString("editora") + "\n"
+						+ " Gênero: " + resultado.getString("genero") + "\n"
+						+ " ----------------------------------------\n"; 
+			}
+			JOptionPane.showMessageDialog(null, livros);
+			cmd.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//method to update the book
