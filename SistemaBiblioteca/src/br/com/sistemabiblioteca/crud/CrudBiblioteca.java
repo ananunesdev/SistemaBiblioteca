@@ -1,6 +1,7 @@
 package br.com.sistemabiblioteca.crud;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.swing.JOptionPane;
 
@@ -50,7 +51,21 @@ public class CrudBiblioteca {
 			
 			biblioteca.setGenero(generoSelecionado);
 			
+			String sql = "INSERT INTO livros(titulo, autor, ano_publicacao, isbn, editora, genero) VALUES (?,?,?,?,?,?);";
+			
+			PreparedStatement cmd = conexao.prepareStatement(sql);
+			cmd.setString(1, biblioteca.getTitulo());
+			cmd.setString(2, biblioteca.getAutor());
+			cmd.setInt(3, biblioteca.getAno_publicacao());
+			cmd.setString(4, biblioteca.getIsbn());
+			cmd.setString(5, biblioteca.getEditora());
+			cmd.setString(6, biblioteca.getGenero());
+			
+			cmd.execute();
+			JOptionPane.showMessageDialog(null, "Livro inserido com sucesso!");
+			cmd.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			
 		}
 		
