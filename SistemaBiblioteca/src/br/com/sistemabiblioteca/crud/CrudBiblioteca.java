@@ -191,7 +191,6 @@ public class CrudBiblioteca {
 			cmd.setString(1, biblioteca.getTitulo());
 			cmd.setString(2, biblioteca.getAutor());
 			cmd.setInt(3, biblioteca.getAno_publicacao());
-			
 			cmd.setString(5, biblioteca.getEditora());
 			cmd.setString(6, biblioteca.getGenero());
 			cmd.setString(4, biblioteca.getIsbn());
@@ -211,7 +210,27 @@ public class CrudBiblioteca {
 	
 	//method to delete the book
 	public static void delete() {
-		System.out.println("DELETE");
+		try {
+			//open connection
+			Connection conexao = ConnectionFactory.createConnection();
+			Biblioteca biblioteca = new Biblioteca();
+			
+			biblioteca.setIsbn(JOptionPane.showInputDialog(
+					"Insira o ISBN do livro: "));
+			
+			String sql = "delete from livros where isbn = ?;";
+			
+			PreparedStatement cmd = conexao.prepareStatement(sql);
+			cmd.setString(1, biblioteca.getIsbn());
+			cmd.execute();
+			
+			JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
+			cmd.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
