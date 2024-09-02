@@ -201,8 +201,7 @@ public class CrudBiblioteca {
 			
 			
 		} catch (Exception e) {
-			
-			
+			e.printStackTrace();
 		}
 
 
@@ -229,6 +228,7 @@ public class CrudBiblioteca {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 		
 	}
